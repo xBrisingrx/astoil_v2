@@ -15,21 +15,30 @@
     </div><!--/copyright-->
 </div><!--/footer-v1-->
 <!--=== End Footer Version 1 ===-->
+</div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->
-<script src="assets/plugins/jquery/jquery.min.js"></script>
-<script src="assets/plugins/jquery/jquery-migrate.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.min.js');?>"></script>
 
 <!-- JS Implementing Plugins -->
-<script src="assets/plugins/back-to-top.js"></script>
-<script src="assets/plugins/smoothScroll.js"></script>
+<script src="<?php echo base_url('assets/plugins/back-to-top.js');?>"></script>
+<script src="<?php echo base_url('assets/plugins/smoothScroll.js');?>"></script>
+<script src="<?php echo base_url('assets/plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js');?>"></script>
+<script src="<?php echo base_url('assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js');?>"></script>
+<script src="<?php echo base_url('assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js');?>"></script>
+<script src="<?php echo base_url('assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js');?>"></script>
+<script src="<?php echo base_url('assets/plugins/sky-forms-pro/skyforms/js/messages_es_AR.js');?>"></script>
 
 <!-- JS Customization -->
-<script type="text/javascript" src="assets/js/custom.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/custom.js');?>"></script>
 
 <!-- JS Page Level -->
-<script src="assets/js/app.js"></script>
+<script src="<?php echo base_url('assets/js/app.js');?>"></script>
+
+<!-- Datatables -->
+<script src="<?php echo base_url('assets/js/datatables.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/datatables.bootstrap.min.js');?>"></script>
+
 <script>
 jQuery(document).ready(function() {
     App.init();

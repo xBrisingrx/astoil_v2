@@ -1,23 +1,22 @@
-<section class="container-fluid g-py-10">
+<!--=== Content ===-->
+<div class="container content-md">
   <h1>Productos</h1>
 
 <?php if ($this->session->userdata('rol') == 1 ): ?>
-  <button class="btn btn-primary justify-content-end margin_bottom g-mb-10 g-mr-20" onclick="create_product()"> <i class="fa fa-plus"></i> Nuevo </button>
+  <button class="btn btn-primary justify-content-end margin_bottom g-mb-10 g-mr-20" data-toggle="modal" data-target="#modal_products"> <i class="fa fa-plus"></i> Nuevo </button>
 <?php endif ?>
 
   <button type="button" class="btn btn-info margin_bottom g-mb-10 g-mr-20" data-toggle="modal" data-target="#modal_descargar_excel">
   Descargar Excel
   </button>
 
-  <!-- Hover Rows -->
-  <div class="card g-brd-teal rounded-0 g-mb-30" >
-    <h3 class="card-header g-bg-teal g-brd-transparent g-color-white g-font-size-16 rounded-0 mb-0">
-      <i class="fa fa-gear g-mr-5"></i>
-      Listado de productos registrados
-    </h3>
-
-    <div class="table-responsive">
-      <table id="products_table" class="table table-striped table-hover u-table--v1 margin-tables">
+  <!--=== Tabla de productos ===-->
+  <div class="panel panel-aqua margin-bottom-40">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-user"> Listado de productos registrados</i></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover" id="tablaClientes">
         <thead>
           <tr>
             <th>Código</th>
@@ -30,16 +29,22 @@
             <th>Acciones</th>
           </tr>
         </thead>
-
         <tbody>
           <!-- Completo con ajax -->
-          </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <!-- End Hover Rows -->
-</section>
+  <!--=== End tabla de productos ===-->
+</div>
+<!--=== End Content ===-->
+
+
+
+
+
+
+
 
 
 <!-- Modal con form para crear/editar productos -->
@@ -53,7 +58,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="form_products" class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30">
+        <form id="form_products" class="sky-form">
 
           <!-- ID product -->
             <input type="hidden" name="product_id" id="product_id" value="">
@@ -61,7 +66,7 @@
           <!-- Select rubro -->
           <div class="form-group row g-mb-5">
             <label class="mr-sm-3 mb-3 mb-lg-0 col-sm-2" for="rubro_id">Rubro </label>
-            <select class="custom-select mb-3 col-sm-4" id="rubro_id" >
+            <select id="rubro_id" >
               <option value="0" disabled selected>Seleccione rubro</option>
               <?php foreach ($rubros as $rubro): ?>
                 <option value="<?php echo $rubro->id ?>"> <?php echo $rubro->name; ?> </option>
@@ -200,8 +205,16 @@
     $('#modal_products #btnSave').text('Grabar producto');
     $('.form-control').removeClass('error');
     $('.error').empty();
-    $('#modal_products').modal('show');
   }
+
+  $('#modal_products').on('shown.bs.modal', function () {
+    save_method = 'create';
+    $('#form_products')[0].reset()
+    $('#modal_products .modal-title').text('Alta de producto');
+    $('#modal_products #btnSave').text('Grabar producto');
+    $('.form-control').removeClass('error');
+    $('.error').empty();
+  })
 
   function edit_product(id)
   {
